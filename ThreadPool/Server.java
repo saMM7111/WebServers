@@ -23,7 +23,7 @@ public class Server {
 
     public static void main(String[] args) {
         int port = 8010;
-        int poolSize = 10; // Adjust the pool size as needed
+        int poolSize = 10; 
         Server server = new Server(poolSize);
 
         try {
@@ -34,13 +34,13 @@ public class Server {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
 
-                // Use the thread pool to handle the client
+                
                 server.threadPool.execute(() -> server.handleClient(clientSocket));
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
-            // Shutdown the thread pool when the server exits
+            
             server.threadPool.shutdown();
         }
     }
